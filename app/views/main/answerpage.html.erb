@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RadQA</title>
+</head>
+<body>
+
+  <div class="patient-info">
+
+    <h1>Welcome to the most basic answering App!</h1>
+
+    <div>Patient Id: <%= @patient.fetch(:id)%> </div> <br>
+
+    <div>Patient First Name: <%= @patient.fetch(:first_name)%> </div> <br>
+
+    <div>Patient Last Name: <%= @patient.fetch(:last_name)%> </div> <br>
+
+    <div>Visit Description: <br> <%= @patient.fetch(:description)%> </div> <br>
+
+    <div>Visit Specialty: <%= @patient.fetch(:medical_specialty)%> </div> <br>
+
+    <div>Visit Purpose: <%= @patient.fetch(:sample_name)%> </div> <br>
+
+    <div>Visit Notes: <br> <%= @patient.fetch(:transcription)%> </div> <br>
+
+    <div>Associated Keywords: <%= @patient.fetch(:keywords)%> </div> <br> 
+
+    <br>
+    <br>
+
+    <div>Original Question: <br><%= @display_question%></div> <br>
+
+    <div>Here is the answer: <br> <%=@message_response%> </div>
+
+    <div>
+      <form action="/answer">
+        <div><label for="question">Question about patient</label></div>
+        <textarea name="question" id="question" cols="30" rows="10"></textarea> <br>
+        <button>Ask</button>
+      </form>    
+    </div>
+  </div>
+
+</body>
+</html>
