@@ -8,33 +8,54 @@
 </head>
 <body>
 
-  <div class="patient-info">
+  <div class="patient-info container-fluid"">
 
-    <h1>Welcome to the most basic App!</h1>
+    <div class="text-center"><h1>Medical Question Answering</h1></div>
 
-    <div>Patient Id: <%= @patient.fetch(:id)%> </div> <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Patient Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Visit Speciality</th>
+          <th scope="col">Visit Description</th>
+          <th scope="col">Visit Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="col"><%= @patient.fetch(:id)%></td>
+          <td scope="col"><%= @patient.fetch(:first_name)%></td>
+          <td scope="col"><%= @patient.fetch(:last_name)%></td> 
+          <td scope="col"><%= @patient.fetch(:medical_specialty)%></td>                         
+          <td scope="col"><%= @patient.fetch(:description)%></td>    
+          <td scope="col"><%= @patient.fetch(:sample_name)%></td>             
+        </tr>
+      </tbody>
+    </table>
 
-    <div>Patient First Name: <%= @patient.fetch(:first_name)%> </div> <br>
+    <div> <h5>Visit Notes:</h5> <p class="lead"><%= @patient.fetch(:transcription)%></p> </div>
 
-    <div>Patient Last Name: <%= @patient.fetch(:last_name)%> </div> <br>
-
-    <div>Visit Description: <br> <%= @patient.fetch(:description)%> </div> <br>
-
-    <div>Visit Specialty: <%= @patient.fetch(:medical_specialty)%> </div> <br>
-
-    <div>Visit Purpose: <%= @patient.fetch(:sample_name)%> </div> <br>
-
-    <div>Visit Notes: <br> <%= @patient.fetch(:transcription)%> </div> <br>
-
-    <div>Associated Keywords: <%= @patient.fetch(:keywords)%> </div> <br> 
-
+    <div> 
+      <h5>Associated Keywords:</h5> 
+      <ul class="list-unstyled list-inline">
+      <% @keyword_array.each do |keyword|%>
+       <li class="list-inline-item"><%=keyword.capitalize%></li>
+      <%end%>
+      </ul>
+    </div>
   </div>
-  <br>
-  <form action="/answer">
-    <div><label for="question">Question about patient</label></div>
-    <textarea name="question" id="question" cols="30" rows="10"></textarea> <br>
-    <button>Ask</button>
-  </form>
+
+  <div class="qa-section container-fluid">
+    <form action="/answer">
+      <div><label for="question">Question about patient</label></div>
+      <textarea name="question" id="question" class="form-control">
+      </textarea> 
+      <br>
+      <button class="btn btn-secondary float-end">Ask</button>
+    </form>
+  </div>
 
 </body>
 </html>
