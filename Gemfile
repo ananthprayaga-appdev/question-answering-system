@@ -14,6 +14,7 @@ gem "sprockets", "< 4"
 gem "sassc-rails"
 gem "faker"
 gem "ruby-openai"
+gem "sqlite3"
 
 group :development do
   gem "htmlbeautifier"
